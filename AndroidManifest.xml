@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.anko"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="8" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.anko.ui.LoadActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.anko.ui.LoginActivity"
+            android:label="@string/title_activity_category" >
+        </activity>
+        <activity
+            android:name="com.anko.ui.HomeActivity"
+            android:label="@string/title_activity_main" >
+        </activity>
+        <activity
+            android:name="com.anko.ui.IndexActivity"
+            android:label="@string/title_activity_index" >
+        </activity>
+        <activity
+            android:name="com.anko.ui.SearchActivity"
+            android:label="@string/title_activity_search" >
+        </activity>
+        <activity
+            android:name="com.anko.ui.ChartActivity"
+            android:label="@string/title_activity_cart" >
+        </activity>
+        <activity
+            android:name="com.anko.ui.PersonalActivity"
+            android:label="@string/title_activity_personal" >
+        </activity>
+        <activity
+            android:name="com.anko.ui.GraphicActivity"
+            android:label="@string/title_activity_tabao" >
+        </activity>
+    </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+</manifest>

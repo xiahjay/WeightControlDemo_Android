@@ -1,0 +1,279 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <Button
+        android:id="@+id/add_weight"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"        
+        android:gravity="center"
+        android:onClick="onClickAddWeight"
+        android:padding="4dp"
+        android:text="添加体重"
+        android:textSize="18sp" />
+
+ <RelativeLayout
+        android:id="@+id/l0"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"     
+        android:layout_below="@+id/add_weight"
+        android:background="@drawable/diary_first_item"
+        android:gravity="center_vertical" >
+
+        <TextView
+            android:id="@+id/t0"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="8dp"
+            android:text="日期"
+            android:textColor="#000"
+            android:textSize="17sp" />
+         <TextView
+            android:id="@+id/r0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="40dp"           
+            android:layout_toRightOf="@id/t0"
+            android:gravity="right"
+            android:padding="8dp"
+            android:text="体重"           
+            android:textSize="17sp" />
+
+        
+    </RelativeLayout>
+    <!-- *********************************************************************** -->
+    
+
+    <RelativeLayout
+        android:id="@+id/l1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/l0"
+        android:background="@drawable/diary_item"
+        android:gravity="center_vertical"        >
+
+        <TextView
+            android:id="@+id/t1"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="8dp"           
+            android:textColor="#000"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/r1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="40dp"            
+            android:layout_toRightOf="@id/t1"
+            android:gravity="right"
+            android:padding="8dp"               
+            android:textSize="17sp" />
+      
+    </RelativeLayout>
+
+    <!-- *********************************************************************** -->
+     <RelativeLayout
+        android:id="@+id/l2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/l1"
+        android:background="@drawable/diary_item"
+        android:gravity="center_vertical"       >
+
+        <TextView
+            android:id="@+id/t2"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="8dp"           
+            android:textColor="#000"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/r2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="40dp"          
+            android:layout_toRightOf="@id/t2"
+            android:gravity="right"
+            android:padding="8dp"            
+            android:textSize="17sp" />
+
+       
+    </RelativeLayout>
+
+    <!-- *********************************************************************** -->
+ <RelativeLayout
+        android:id="@+id/l3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/l2"
+        android:background="@drawable/diary_item"
+        android:gravity="center_vertical"       >
+
+        <TextView
+            android:id="@+id/t3"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="8dp"            
+            android:textColor="#000"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/r3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="40dp"           
+            android:layout_toRightOf="@id/t3"
+            android:gravity="right"
+            android:padding="8dp"            
+            android:textSize="17sp" />
+        
+    </RelativeLayout>
+
+    <!-- *********************************************************************** -->
+     <RelativeLayout
+        android:id="@+id/l4"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/l3"
+        android:background="@drawable/diary_item"
+        android:gravity="center_vertical"        >
+
+        <TextView
+            android:id="@+id/t4"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="8dp"            
+            android:textColor="#000"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/r4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="40dp"          
+            android:layout_toRightOf="@id/t4"
+            android:gravity="right"
+            android:padding="8dp"            
+            android:textSize="17sp" />
+
+      
+    </RelativeLayout>
+
+    <!-- *********************************************************************** -->
+     <RelativeLayout
+        android:id="@+id/l5"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/l4"
+        android:background="@drawable/diary_item"
+        android:gravity="center_vertical"         >
+
+        <TextView
+            android:id="@+id/t5"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="8dp"            
+            android:textColor="#000"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/r5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="40dp"           
+            android:layout_toRightOf="@id/t5"
+            android:gravity="right"
+            android:padding="8dp"            
+            android:textSize="17sp" />
+
+        
+    </RelativeLayout>
+
+    <!-- *********************************************************************** -->
+     <RelativeLayout
+        android:id="@+id/l6"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/l5"
+        android:background="@drawable/diary_item"
+        android:gravity="center_vertical"        >
+
+        <TextView
+            android:id="@+id/t6"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="8dp"            
+            android:textColor="#000"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/r6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="40dp"            
+            android:layout_toRightOf="@id/t6"
+            android:gravity="right"
+            android:padding="8dp"            
+            android:textSize="17sp" />
+
+       
+    </RelativeLayout>
+
+    <!-- *********************************************************************** -->
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/l7"
+        android:background="@drawable/diary_last_item"
+        android:gravity="center_vertical"      >
+
+        <TextView
+            android:id="@+id/t7"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="8dp"            
+            android:textColor="#000"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/r7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="40dp"          
+            android:layout_toRightOf="@id/t7"
+            android:gravity="right"
+            android:padding="8dp"           
+            android:textSize="17sp" />
+        
+    </RelativeLayout>   
+
+</LinearLayout>
