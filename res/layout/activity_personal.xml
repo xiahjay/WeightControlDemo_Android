@@ -47,18 +47,8 @@
                 android:text="嵇雨萌"
                 android:textColor="#000"
                 android:textSize="17sp" />
+         </LinearLayout>
 
-            <!--
-                  <TextView
-                android:id="@+id/setting_age"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="3dp"
-                android:text="21"
-                android:textColor="#000"
-                android:textSize="15sp" />
-            -->
-        </LinearLayout>
     </RelativeLayout>
 
     <!-- *********************************************************************** -->
@@ -80,11 +70,8 @@
             android:text="基本信息"
             android:textColor="#000"
             android:textSize="17sp" />
-
-        
     </RelativeLayout>
     <!-- *********************************************************************** -->
-    
 
     <RelativeLayout
         android:id="@+id/relativeLayout3"
@@ -132,7 +119,8 @@
     </RelativeLayout>
 
     <!-- *********************************************************************** -->
-     <RelativeLayout
+
+    <RelativeLayout
         android:id="@+id/relativeLayout4"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -178,7 +166,8 @@
     </RelativeLayout>
 
     <!-- *********************************************************************** -->
- <RelativeLayout
+
+    <RelativeLayout
         android:id="@+id/relativeLayout5"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -224,7 +213,9 @@
     </RelativeLayout>
 
     <!-- *********************************************************************** -->
+
     <RelativeLayout
+        android:id="@+id/relativeLayout6"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -267,20 +258,22 @@
             android:scaleType="matrix"
             android:src="@drawable/diary_arrow" />
     </RelativeLayout>
-    
-    <Button android:id="@+id/exit_button"
-      				    android:layout_width="fill_parent" 
-        				android:layout_height="wrap_content"
-        				android:layout_marginTop="350dp"
-        				android:layout_marginLeft="12dp"
-        				android:layout_marginRight="12dp"
-        				android:padding="4dp" 
-        				android:text="退出登录"
-        				android:textSize="18sp"		
-						android:textColor="#fff"
-						android:gravity="center"
-						android:background="@drawable/btn_style_red"
-						android:onClick="onClickExit"
-      				    />
+
+    <Button
+        android:id="@+id/exit_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="350dp"
+        android:background="@drawable/btn_style_red"
+        android:gravity="center"
+        android:onClick="onClickExit"
+        android:padding="4dp"
+        android:text="退出登录"
+        android:textColor="#fff"
+        android:textSize="18sp" />
+
+
 
 </RelativeLayout>

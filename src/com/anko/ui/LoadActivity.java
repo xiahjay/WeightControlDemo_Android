@@ -55,7 +55,7 @@ public class LoadActivity extends BaseActivity {
 			public void onAnimationEnd(Animation animation) {
 				// TODO Auto-generated method stub
 				//openActivity(LoginActivity.class);
-				Intent intent = new Intent(LoadActivity.this,LoginActivity.class);
+				Intent intent = new Intent(LoadActivity.this,HomeActivity.class);
 				startActivity(intent);
 				overridePendingTransition(R.anim.push_left_in,
 						R.anim.push_left_out);

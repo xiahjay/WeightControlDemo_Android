@@ -19,7 +19,9 @@
          android:id="@+id/edit_weight"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="输入体重（单位：kg）" />
+        android:hint="输入体重（单位：kg）" 
+        android:inputType="numberDecimal"
+        />
 	</LinearLayout>
 
 </LinearLayout>

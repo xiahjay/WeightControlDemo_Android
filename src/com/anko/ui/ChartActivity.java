@@ -1,10 +1,13 @@
 package com.anko.ui;
 
+import java.util.ArrayList;
+
 import com.anko.R;
 import com.anko.R.layout;
 import com.anko.R.menu;
 
 import android.os.Bundle;
+import android.R.integer;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -19,11 +22,46 @@ import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 
-public class ChartActivity extends Activity  {	
+public class ChartActivity extends Activity implements OnItemSelectedListener, OnItemClickListener {
+	
+	private static ArrayList<Float> dataList;
+	private ArrayAdapter<String> aaData;
+	private ListView lvCommonListView;
+	//private static String settingWeight = new String();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_chart);
+		lvCommonListView = (ListView) findViewById(R.id.lvCommonListView);
+		dataList=new ArrayList<Float>();
+		//dataList.add(settingWeight);
+		//dataList.add(58.9f);
+		//dataList.add(58.4f);
+		
+		refreshListView();
+		lvCommonListView.setOnItemClickListener(this);
+		lvCommonListView.setOnItemSelectedListener(this);
+
+	}
+	private void refreshListView() {
+		// TODO Auto-generated method stub
+		String[] data=convertArralyListToArray();
+		aaData = new ArrayAdapter<String>(this,
+				android.R.layout.simple_list_item_1, data);
+		
+		lvCommonListView.setAdapter(aaData);			
+		
+	}
+
+	private String[] convertArralyListToArray() {
+		// TODO Auto-generated method stub
+		String[] dataStrings;
+		dataStrings=new String[dataList.size()];
+		for (int i=0;i<dataList.size();i++){
+			dataStrings[i]=Float.toString(dataList.get(i))+"kg";
+			//dataStrings[i]=dataList.get(i)+"kg";
+		}
+		return dataStrings;
 	}
 
 	@Override
@@ -45,8 +83,11 @@ public class ChartActivity extends Activity  {
                              	                       	  
          AlertDialog ad = (AlertDialog)dialog;  
 	     EditText editWeight = (EditText) ad.findViewById(R.id.edit_weight);	                			  
-         String settingWeight=editWeight.getText().toString().trim();	                        
-                //settingIdealWeight.setText(idealweightString+"kg");
+         String settingWeight=editWeight.getText().toString().trim();	
+         Float currentWeight=Float.valueOf(settingWeight);
+         dataList.add(currentWeight);
+ 		 refreshListView();
+        
                     }  
        }).setNegativeButton("取消",
 			new DialogInterface.OnClickListener(){
@@ -55,6 +96,25 @@ public class ChartActivity extends Activity  {
 
 			        }
 				}).show();
+		
+	}
+
+	@Override
+	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
+			long arg3) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onNothingSelected(AdapterView<?> arg0) {
+		// TODO Auto-generated method stub
 		
 	}
 
