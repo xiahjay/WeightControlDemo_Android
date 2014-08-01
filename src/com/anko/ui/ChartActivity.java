@@ -1,6 +1,8 @@
 package com.anko.ui;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import com.anko.R;
 import com.anko.R.layout;
@@ -16,24 +18,31 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
+import android.widget.DatePicker.OnDateChangedListener;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 
-public class ChartActivity extends Activity implements OnItemSelectedListener, OnItemClickListener {
+public class ChartActivity extends Activity implements OnItemSelectedListener, OnItemClickListener, OnDateChangedListener {
 	
 	private static ArrayList<Float> dataList;
+	private static ArrayList<String> datelist;
 	private ArrayAdapter<String> aaData;
 	private ListView lvCommonListView;
+	private DatePicker datePicker;
+	private String getdate;
 	//private static String settingWeight = new String();
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_chart);
 		lvCommonListView = (ListView) findViewById(R.id.lvCommonListView);
 		dataList=new ArrayList<Float>();
+		datelist=new ArrayList<String>();
 		//dataList.add(settingWeight);
 		//dataList.add(58.9f);
 		//dataList.add(58.4f);
@@ -58,7 +67,7 @@ public class ChartActivity extends Activity implements OnItemSelectedListener, O
 		String[] dataStrings;
 		dataStrings=new String[dataList.size()];
 		for (int i=0;i<dataList.size();i++){
-			dataStrings[i]=Float.toString(dataList.get(i))+"kg";
+			dataStrings[i]=datelist.get(i)+Float.toString(dataList.get(i))+"kg";
 			//dataStrings[i]=dataList.get(i)+"kg";
 		}
 		return dataStrings;
@@ -82,10 +91,12 @@ public class ChartActivity extends Activity implements OnItemSelectedListener, O
       public void onClick(DialogInterface dialog,int which) {  
                              	                       	  
          AlertDialog ad = (AlertDialog)dialog;  
+         datePicker = (DatePicker) ad.findViewById(R.id.datepicker);
 	     EditText editWeight = (EditText) ad.findViewById(R.id.edit_weight);	                			  
          String settingWeight=editWeight.getText().toString().trim();	
          Float currentWeight=Float.valueOf(settingWeight);
          dataList.add(currentWeight);
+         onDateChanged(null, 0, 0, 0);
  		 refreshListView();
         
                     }  
@@ -116,6 +127,18 @@ public class ChartActivity extends Activity implements OnItemSelectedListener, O
 	public void onNothingSelected(AdapterView<?> arg0) {
 		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public void onDateChanged(DatePicker view, int year, int monthOfYear,
+			int dayOfMonth)
+	{
+		Calendar calendar = Calendar.getInstance();
+
+		calendar.set(datePicker.getYear(), datePicker.getMonth(), datePicker
+				.getDayOfMonth());
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 ");
+		getdate=sdf.format(calendar.getTime());
+		datelist.add(getdate);
 	}
 
 	
