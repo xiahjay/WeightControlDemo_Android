@@ -134,9 +134,9 @@ public class ChartActivity extends Activity implements OnItemSelectedListener, O
 	{
 		Calendar calendar = Calendar.getInstance();
 
-		calendar.set(datePicker.getYear(), datePicker.getMonth(), datePicker
+		calendar.set(datePicker.getMonth(), datePicker
 				.getDayOfMonth());
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 ");
+		SimpleDateFormat sdf = new SimpleDateFormat("MM月dd日 ");
 		getdate=sdf.format(calendar.getTime());
 		datelist.add(getdate);
 	}
