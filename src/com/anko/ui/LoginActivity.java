@@ -55,7 +55,7 @@ public class LoginActivity extends Activity {
 		
 		if (mUserDataManager == null) {
 			mUserDataManager = new UserDataManager(this);
-			mUserDataManager.openDataBase();
+			mUserDataManager.openDatabase();
         }
 	}
 
@@ -110,7 +110,7 @@ public class LoginActivity extends Activity {
 			}
 			
 			UserData mUser = new UserData(userName, userPwd);
-			mUserDataManager.openDataBase();
+			mUserDataManager.openDatabase();
 			long flag = mUserDataManager.insertUserData(mUser);
 			if (flag == -1) {
 				Toast.makeText(this, getString(R.string.register_fail),
@@ -144,7 +144,7 @@ public class LoginActivity extends Activity {
 	protected void onResume() {
 		if (mUserDataManager == null) {
 			mUserDataManager = new UserDataManager(this);
-			mUserDataManager.openDataBase();
+			mUserDataManager.openDatabase();
         }
 		super.onResume();
 	}
@@ -157,7 +157,7 @@ public class LoginActivity extends Activity {
 	@Override
 	protected void onPause() {
 		if (mUserDataManager != null) {
-			mUserDataManager.closeDataBase();
+			mUserDataManager.closeDatabase();
 			mUserDataManager = null;
         }
 		super.onPause();

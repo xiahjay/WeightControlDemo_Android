@@ -1,7 +1,17 @@
 package com.anko.ui;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+import com.anko.R;
+//import com.example.headdiary.data.Config.DBConfig;
+
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,27 +20,32 @@ import android.util.Log;
 
 
 public class UserDataManager {
+	private final int BUFFER_SIZE = 400000;
 	private static final String TAG = "UserDataManager";
-	private static final String DB_NAME = "user_data";
-	private static final String TABLE_NAME = "users";
+	//private static final String DB_NAME = "user_data";
+	private static final String TABLE_NAME = "login_information";
 	public static final String ID = "_id";
 
 	public static final String USER_NAME = "user_name";
 	public static final String USER_PWD = "user_pwd";
 	public static final String SILENT = "silent";
 	public static final String VIBRATE = "vibrate";
+	public static final String DB_PATH = "/sdcard";
+	public static final String DB_NAME = "weightcontroldemo"; //保存的数据库文件名
+	public static final String DB_FULLNAME = DB_PATH + "/" + DB_NAME;
 
 	private static final int DB_VERSION = 2;
 	private Context mContext = null;
 
 	private static final String DB_CREATE = "CREATE TABLE " + TABLE_NAME + " ("
-			+ ID + " integer primary key," + USER_NAME + " varchar,"
+			+ ID + " integer primary key," + USER_NAME + " nvarchar,"
 			+ USER_PWD + " varchar" + ");";
 
 	private SQLiteDatabase mSQLiteDatabase = null;
-	private DataBaseManagementHelper mDatabaseHelper = null;
+	
+	//private DataBaseManagementHelper mDatabaseHelper = null;
 
-	private static class DataBaseManagementHelper extends SQLiteOpenHelper {
+	/*private static class DataBaseManagementHelper extends SQLiteOpenHelper {
 
 		DataBaseManagementHelper(Context context) {
 			super(context, DB_NAME, null, DB_VERSION);
@@ -38,35 +53,64 @@ public class UserDataManager {
 
 		@Override
 		public void onCreate(SQLiteDatabase db) {
+	
 			Log.i(TAG,"db.getVersion()="+db.getVersion());
-			db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME + ";");
-			db.execSQL(DB_CREATE);
+			//db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME + ";");
+			//db.execSQL(DB_CREATE);
 			Log.i(TAG, "db.execSQL(DB_CREATE)");
 			Log.e(TAG, DB_CREATE);
 		}
+
+		
 
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 			Log.i(TAG, "DataBaseManagementHelper onUpgrade");
 			onCreate(db);
 		}
-	}
+	}*/
 
 	public UserDataManager(Context context) {
 		mContext = context;
 		Log.i(TAG, "UserDataManager construction!");
 	}
 
-	public void openDataBase() throws SQLException {
+	public void openDatabase() {
 		
-		mDatabaseHelper = new DataBaseManagementHelper(mContext);
-		mSQLiteDatabase = mDatabaseHelper.getWritableDatabase();
+		 this. mSQLiteDatabase = this.openDatabase(DB_PATH + "/" + DB_NAME); 
 	}
 
-	public void closeDataBase() throws SQLException {
-
-		mDatabaseHelper.close();
-	}
+	  private SQLiteDatabase openDatabase(String dbfile) { 
+	        try { 
+	            if (!(new File(dbfile).exists())) {
+	            	//判断数据库文件是否存在，若不存在则执行导入，否则直接打开数据库 
+	                InputStream is = this.mContext.getResources().openRawResource( 
+	                        R.raw.weightcontroldemo); //欲导入的数据库 
+	                FileOutputStream fos = new FileOutputStream(dbfile); 
+	                byte[] buffer = new byte[BUFFER_SIZE]; 
+	                int count = 0; 
+	                while ((count = is.read(buffer)) > 0) { 
+	                    fos.write(buffer, 0, count); 
+	                } 
+	                fos.close(); 
+	                is.close(); 
+	            } 
+	            SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(dbfile, 
+	                    null); 
+	            return db; 
+	        } catch (FileNotFoundException e) { 
+	            Log.e("Database", "File not found"); 
+	            e.printStackTrace(); 
+	        } catch (IOException e) { 
+	            Log.e("Database", "IO exception"); 
+	            e.printStackTrace(); 
+	        } 
+	        return null; 
+	    } 
+	
+	  public void closeDatabase() {
+	        this. mSQLiteDatabase.close();
+	    }
 
 	public long insertUserData(UserData userData) {
 		
@@ -146,6 +190,8 @@ public class UserDataManager {
 		}
 		return result;
 	}
+	
+	
 	
 	public int findUserByNameAndPwd(String userName,String pwd){
 		Log.i(TAG,"findUserByNameAndPwd");
