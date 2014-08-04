@@ -42,39 +42,6 @@ public class LoadActivity extends BaseActivity {
 		findViewById();
 		initView();
 	}
-
-	private void importDB(String dbfile) {
-		// TODO Auto-generated method stub
-int BUFFER_SIZE = 400000;
-		
-        try {
-            if (!(new File(dbfile).exists())) {
-            	//判断数据库文件是否存在，若不存在则执行导入，否则直接打开数据库
-            	Log.i(TAG, "try to import DB!");
-                InputStream is = getResources().openRawResource(R.raw.weightcontroldemo); //欲导入的数据库
-                FileOutputStream fos = new FileOutputStream(dbfile);
-                byte[] buffer = new byte[BUFFER_SIZE];
-                int count = 0;
-                while ((count = is.read(buffer)) > 0) {
-                    fos.write(buffer, 0, count);
-                }
-                fos.close();
-                is.close();
-                Log.i(TAG,"Import DB sucessfully!");
-            }
-            else{
-            	Log.i(TAG, "DB exists!");
-            }
-            SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(dbfile,null);
-            db.close();
-        } catch (FileNotFoundException e) {
-            Log.e(TAG+"-Database", "File not found");
-            e.printStackTrace();
-        } catch (IOException e) {
-            Log.e(TAG+"-Database", "IO exception");
-            e.printStackTrace();
-        }
-	}
 	
 	
 

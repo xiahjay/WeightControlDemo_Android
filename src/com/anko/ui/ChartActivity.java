@@ -1,5 +1,7 @@
 package com.anko.ui;
 
+import java.sql.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -10,6 +12,7 @@ import com.anko.R.menu;
 
 import android.os.Bundle;
 import android.R.integer;
+import android.R.string;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -34,7 +37,8 @@ public class ChartActivity extends Activity implements OnItemSelectedListener, O
 	private ListView lvCommonListView;
 	private DatePicker datePicker;
 	private String getdate;
-	//private static String settingWeight = new String();
+	private UserDataManager mUserDataManager;
+	public static int  id;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,15 +47,31 @@ public class ChartActivity extends Activity implements OnItemSelectedListener, O
 		lvCommonListView = (ListView) findViewById(R.id.lvCommonListView);
 		dataList=new ArrayList<Float>();
 		datelist=new ArrayList<String>();
-		//dataList.add(settingWeight);
-		//dataList.add(58.9f);
-		//dataList.add(58.4f);
-		
+		if (mUserDataManager == null) {
+			mUserDataManager = new UserDataManager(this);
+			mUserDataManager.openDatabase();
+			}
+		importExitedData();
 		refreshListView();
 		lvCommonListView.setOnItemClickListener(this);
 		lvCommonListView.setOnItemSelectedListener(this);
-
+		mUserDataManager.closeDatabase();
 	}
+	
+	private void importExitedData(){
+		id= mUserDataManager.getRowNumber()+1;
+		for(int i=1; i<id; i++ ){
+			String weight= new String();
+			String date = new String();	
+			weight=mUserDataManager.getStringByColumnName("user_weight",i);
+			date=mUserDataManager.getStringByColumnName("user_date",i);
+			Float a= Float.valueOf(weight);
+			dataList.add(a);
+			datelist.add(date);	
+		}
+		
+	}
+	
 	private void refreshListView() {
 		// TODO Auto-generated method stub
 		String[] data=convertArralyListToArray();
@@ -67,7 +87,7 @@ public class ChartActivity extends Activity implements OnItemSelectedListener, O
 		String[] dataStrings;
 		dataStrings=new String[dataList.size()];
 		for (int i=0;i<dataList.size();i++){
-			dataStrings[i]=datelist.get(i)+Float.toString(dataList.get(i))+"kg";
+			dataStrings[i]=datelist.get(i)+": "+Float.toString(dataList.get(i))+"kg";
 			//dataStrings[i]=dataList.get(i)+"kg";
 		}
 		return dataStrings;
@@ -97,6 +117,9 @@ public class ChartActivity extends Activity implements OnItemSelectedListener, O
          Float currentWeight=Float.valueOf(settingWeight);
          dataList.add(currentWeight);
          onDateChanged(null, 0, 0, 0);
+         mUserDataManager.openDatabase();
+         mUserDataManager.insertWeightData(currentWeight,getdate);
+         mUserDataManager.closeDatabase();
  		 refreshListView();
         
                     }  
@@ -134,9 +157,9 @@ public class ChartActivity extends Activity implements OnItemSelectedListener, O
 	{
 		Calendar calendar = Calendar.getInstance();
 
-		calendar.set(datePicker.getMonth(), datePicker
+		calendar.set(datePicker.getYear(),datePicker.getMonth(), datePicker
 				.getDayOfMonth());
-		SimpleDateFormat sdf = new SimpleDateFormat("MM月dd日 ");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		getdate=sdf.format(calendar.getTime());
 		datelist.add(getdate);
 	}

@@ -23,11 +23,14 @@ public class UserDataManager {
 	private final int BUFFER_SIZE = 400000;
 	private static final String TAG = "UserDataManager";
 	//private static final String DB_NAME = "user_data";
-	private static final String TABLE_NAME = "login_information";
+	private static final String TABLE_NAME1 = "login_information";
+	private static final String TABLE_NAME2 = "weight_information";
 	public static final String ID = "_id";
 
 	public static final String USER_NAME = "user_name";
 	public static final String USER_PWD = "user_pwd";
+	public static final String USER_WEIGHT = "user_weight";
+	public static final String USER_DATE = "user_date";
 	public static final String SILENT = "silent";
 	public static final String VIBRATE = "vibrate";
 	public static final String DB_PATH = "/sdcard";
@@ -37,7 +40,7 @@ public class UserDataManager {
 	private static final int DB_VERSION = 2;
 	private Context mContext = null;
 
-	private static final String DB_CREATE = "CREATE TABLE " + TABLE_NAME + " ("
+	private static final String DB_CREATE = "CREATE TABLE " + TABLE_NAME1 + " ("
 			+ ID + " integer primary key," + USER_NAME + " nvarchar,"
 			+ USER_PWD + " varchar" + ");";
 
@@ -120,7 +123,7 @@ public class UserDataManager {
 		ContentValues values = new ContentValues();
 		values.put(USER_NAME, userName);
 		values.put(USER_PWD, userPwd);
-		return mSQLiteDatabase.insert(TABLE_NAME, ID, values);
+		return mSQLiteDatabase.insert(TABLE_NAME1, ID, values);
 	}
 
 	public boolean updateUserData(UserData userData) {
@@ -132,12 +135,12 @@ public class UserDataManager {
 		ContentValues values = new ContentValues();
 		values.put(USER_NAME, userName);
 		values.put(USER_PWD, userPwd);
-		return mSQLiteDatabase.update(TABLE_NAME, values, ID + "=" + id, null) > 0;
+		return mSQLiteDatabase.update(TABLE_NAME1, values, ID + "=" + id, null) > 0;
 	}
 
 	public Cursor fetchUserData(int id) throws SQLException {
 
-		Cursor mCursor = mSQLiteDatabase.query(false, TABLE_NAME, null, ID
+		Cursor mCursor = mSQLiteDatabase.query(false, TABLE_NAME2, null, ID
 				+ "=" + id, null, null, null, null, null);
 
 		if (mCursor != null) {
@@ -148,18 +151,18 @@ public class UserDataManager {
 
 	public Cursor fetchAllUserDatas() {
 
-		return mSQLiteDatabase.query(TABLE_NAME, null, null, null, null, null,
+		return mSQLiteDatabase.query(TABLE_NAME1, null, null, null, null, null,
 				null);
 	}
 
 	public boolean deleteUserData(int id) {
 
-		return mSQLiteDatabase.delete(TABLE_NAME, ID + "=" + id, null) > 0;
+		return mSQLiteDatabase.delete(TABLE_NAME1, ID + "=" + id, null) > 0;
 	}
 
 	public boolean deleteAllUserDatas() {
 
-		return mSQLiteDatabase.delete(TABLE_NAME, null, null) > 0;
+		return mSQLiteDatabase.delete(TABLE_NAME1, null, null) > 0;
 	}
 
 
@@ -176,13 +179,13 @@ public class UserDataManager {
 			String columnValue) {
 		ContentValues values = new ContentValues();
 		values.put(columnName, columnValue);
-		return mSQLiteDatabase.update(TABLE_NAME, values, ID + "=" + id, null) > 0;
+		return mSQLiteDatabase.update(TABLE_NAME1, values, ID + "=" + id, null) > 0;
 	}
 	
 	public int findUserByName(String userName){
 		Log.i(TAG,"findUserByName , userName="+userName);
 		int result=0;
-		Cursor mCursor=mSQLiteDatabase.query(TABLE_NAME, null, USER_NAME+"="+userName, null, null, null, null);
+		Cursor mCursor=mSQLiteDatabase.query(TABLE_NAME1, null, USER_NAME+"="+userName, null, null, null, null);
 		if(mCursor!=null){
 			result=mCursor.getCount();
 			mCursor.close();
@@ -196,7 +199,7 @@ public class UserDataManager {
 	public int findUserByNameAndPwd(String userName,String pwd){
 		Log.i(TAG,"findUserByNameAndPwd");
 		int result=0;
-		Cursor mCursor=mSQLiteDatabase.query(TABLE_NAME, null, USER_NAME+"="+userName+" and "+USER_PWD+"="+pwd,
+		Cursor mCursor=mSQLiteDatabase.query(TABLE_NAME1, null, USER_NAME+"="+userName+" and "+USER_PWD+"="+pwd,
 				null, null, null, null);
 		if(mCursor!=null){
 			result=mCursor.getCount();
@@ -205,4 +208,50 @@ public class UserDataManager {
 		}
 		return result;
 	}
+	
+	public int getRowNumber()  {
+		int result=0;
+		Cursor mCursor=mSQLiteDatabase.query(TABLE_NAME2,null, null, null, null, null, null);
+		result=mCursor.getCount();
+		mCursor.close();
+		return result;	
+	}
+	
+	public String getWeightById(int id){
+		Cursor mCursor = fetchRowById(id);
+		int columnIndex = mCursor.getColumnIndex(USER_WEIGHT);
+		String columnValue = mCursor.getString(columnIndex);
+		mCursor.close();
+		return columnValue;
 }
+
+	public String getDateById(int id){
+		Cursor mCursor = fetchRowById(id);
+		int columnIndex = mCursor.getColumnIndex(USER_DATE);
+		String columnValue = mCursor.getString(columnIndex);
+		mCursor.close();
+		return columnValue;
+	}
+	
+	private Cursor fetchRowById(int id) throws SQLException {
+		// TODO Auto-generated method stub
+		Cursor mCursor = mSQLiteDatabase.query(false, TABLE_NAME2, null, ID
+				+ "=" + id, null, null, null, null, null);
+		if (mCursor != null) {
+			mCursor.moveToFirst();
+		}
+		return mCursor;
+	}
+	
+public void insertWeightData(Float weight,String date){
+		
+		ContentValues values = new ContentValues();
+		values.put(USER_WEIGHT, weight);
+		values.put(USER_DATE, date);
+		mSQLiteDatabase.insert(TABLE_NAME2, ID, values);
+	
+}
+}
+	
+
+  
