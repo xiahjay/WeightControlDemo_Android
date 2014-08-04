@@ -38,8 +38,8 @@ public class ChartActivity extends Activity implements OnItemSelectedListener, O
 	private DatePicker datePicker;
 	private String getdate;
 	private UserDataManager mUserDataManager;
-	public static int  id;
-	
+	//public static int  id;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -51,16 +51,14 @@ public class ChartActivity extends Activity implements OnItemSelectedListener, O
 			mUserDataManager = new UserDataManager(this);
 			mUserDataManager.openDatabase();
 			}
-		importExitedData();
-		refreshListView();
-		lvCommonListView.setOnItemClickListener(this);
-		lvCommonListView.setOnItemSelectedListener(this);
-		mUserDataManager.closeDatabase();
-	}
-	
-	private void importExitedData(){
-		id= mUserDataManager.getRowNumber()+1;
-		for(int i=1; i<id; i++ ){
+		ArrayList<Weight> weightList=mUserDataManager.getWeightList();
+		for(int i=0;i<weightList.size();i++){
+			Weight weight= weightList.get(i);
+			dataList.add(weight.getUserWeight());
+			datelist.add(weight.getUserDate());	
+		}
+		/*id= mUserDataManager.getRowNumber();
+		for(int i=1; i<id+1; i++ ){
 			String weight= new String();
 			String date = new String();	
 			weight=mUserDataManager.getStringByColumnName("user_weight",i);
@@ -68,9 +66,14 @@ public class ChartActivity extends Activity implements OnItemSelectedListener, O
 			Float a= Float.valueOf(weight);
 			dataList.add(a);
 			datelist.add(date);	
-		}
-		
+		}*/
+		//importExitedData();
+		refreshListView();
+		lvCommonListView.setOnItemClickListener(this);
+		lvCommonListView.setOnItemSelectedListener(this);
+		mUserDataManager.closeDatabase();
 	}
+	
 	
 	private void refreshListView() {
 		// TODO Auto-generated method stub
@@ -117,9 +120,9 @@ public class ChartActivity extends Activity implements OnItemSelectedListener, O
          Float currentWeight=Float.valueOf(settingWeight);
          dataList.add(currentWeight);
          onDateChanged(null, 0, 0, 0);
-         mUserDataManager.openDatabase();
-         mUserDataManager.insertWeightData(currentWeight,getdate);
-         mUserDataManager.closeDatabase();
+        mUserDataManager.openDatabase();
+        mUserDataManager.insertWeightData(currentWeight,getdate);
+        mUserDataManager.closeDatabase();
  		 refreshListView();
         
                     }  
@@ -136,6 +139,7 @@ public class ChartActivity extends Activity implements OnItemSelectedListener, O
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		// TODO Auto-generated method stub
+		
 		
 	}
 

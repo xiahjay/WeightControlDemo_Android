@@ -53,11 +53,8 @@ public class LoginActivity extends Activity {
 		mLoginButton.setOnClickListener(mListener);
 		mCancleButton.setOnClickListener(mListener);
 		
-		if (mUserDataManager == null) {
-			mUserDataManager = new UserDataManager(this);
-			mUserDataManager.openDatabase();
+		  
         }
-	}
 
 	OnClickListener mListener = new OnClickListener() {
 		public void onClick(View v) {

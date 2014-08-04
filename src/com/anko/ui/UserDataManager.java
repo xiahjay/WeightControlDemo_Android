@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 import com.anko.R;
 //import com.example.headdiary.data.Config.DBConfig;
@@ -123,7 +124,7 @@ public class UserDataManager {
 		ContentValues values = new ContentValues();
 		values.put(USER_NAME, userName);
 		values.put(USER_PWD, userPwd);
-		return mSQLiteDatabase.insert(TABLE_NAME1, ID, values);
+		return mSQLiteDatabase.insert(TABLE_NAME1, null, values);
 	}
 
 	public boolean updateUserData(UserData userData) {
@@ -248,7 +249,25 @@ public void insertWeightData(Float weight,String date){
 		ContentValues values = new ContentValues();
 		values.put(USER_WEIGHT, weight);
 		values.put(USER_DATE, date);
-		mSQLiteDatabase.insert(TABLE_NAME2, ID, values);
+		values.put("User_id",1);
+		mSQLiteDatabase.insert(TABLE_NAME2, null, values);
+	
+}
+
+public ArrayList<Weight> getWeightList(){
+	ArrayList<Weight> a= new ArrayList<Weight>();
+	Cursor mCursor=mSQLiteDatabase.query(TABLE_NAME2,null, null, null, null, null, null);
+	if (mCursor!=null && mCursor.moveToFirst()){
+		do{
+			String weight = mCursor.getString(mCursor.getColumnIndex(USER_WEIGHT));
+			String date = mCursor.getString(mCursor.getColumnIndex(USER_DATE));
+			Float c= Float.valueOf(weight);
+			Weight addWeight = new Weight(c,date);
+			a.add(addWeight);
+		}while(mCursor.moveToNext());
+	}
+
+	return a;
 	
 }
 }
