@@ -51,7 +51,8 @@ public class ChartActivity extends Activity implements OnItemSelectedListener, O
 			mUserDataManager = new UserDataManager(this);
 			mUserDataManager.openDatabase();
 			}
-		ArrayList<Weight> weightList=mUserDataManager.getWeightList();
+		String id=WeightDAO.getInstance().getUseId();
+		ArrayList<Weight> weightList=mUserDataManager.getWeightList(id);
 		for(int i=0;i<weightList.size();i++){
 			Weight weight= weightList.get(i);
 			dataList.add(weight.getUserWeight());

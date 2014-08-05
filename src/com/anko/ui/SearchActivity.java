@@ -72,7 +72,8 @@ public class SearchActivity extends Activity {
 		} 
         //这个类用来放置曲线上的所有点，是一个点的集合，根据这些点画出曲线         
         ArrayList<Float> weightList= new  ArrayList<Float>();
-        weightList=mUserDataManager.getWeightData();
+        String id= WeightDAO.getInstance().getUseId();
+        weightList=mUserDataManager.getWeightData(id);
         
         for(int i=0; i<weightList.size(); i++){
         	float x=i+1;
@@ -131,33 +132,7 @@ public class SearchActivity extends Activity {
     }
     
     
-    private void updateChart() {
-        series = new XYSeries(title); 
-        
-        if (mUserDataManager == null) {
-			mUserDataManager = new UserDataManager(this);
-			mUserDataManager.openDatabase();
-			} 
-        //这个类用来放置曲线上的所有点，是一个点的集合，根据这些点画出曲线         
-        ArrayList<Float> weightList= new  ArrayList<Float>();
-        weightList=mUserDataManager.getWeightData();
-        mUserDataManager.closeDatabase();
-        
-        for(int i=0; i<weightList.size(); i++){
-        	float x=i+1;
-        	Float fy= weightList.get(i);
-        	float y=fy.floatValue();
-        	series.add(x, y);
-        	}
-        
-        //创建一个数据集的实例，这个数据集将被用来创建图表  
-        mDataset = new XYMultipleSeriesDataset();  
-          
-        //将点集添加到这个数据集中  
-        mDataset.addSeries(series);  
-		// TODO Auto-generated method stub
-		
-	}
+    
 
 	@Override  
     public void onDestroy() {  

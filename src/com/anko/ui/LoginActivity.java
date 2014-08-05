@@ -6,6 +6,7 @@ import com.anko.R;
 import com.anko.R.layout;
 import com.anko.R.menu;
 
+import android.R.integer;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
@@ -77,10 +78,17 @@ public class LoginActivity extends Activity {
 			String userName = mAccount.getText().toString().trim();
 			String userPwd = mPwd.getText().toString().trim();
 			int result=mUserDataManager.findUserByNameAndPwd(userName, userPwd);
+			//int id=mUserDataManager.findIDByName(userName);
+			//WeightDAO.getInstance().setUserId(id);
 			if(result==1){
 				//login success
+				//mUserDataManager.openDatabase();
+				//String id=mUserDataManager.findIDByName(userName);
+				//mUserDataManager.closeDatabase();
+				WeightDAO.getInstance().setUserId(userName);
 				Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
 				startActivity(intent);
+				
 				//loginView.setVisibility(View.GONE);
 				//loginSuccessView.setVisibility(View.VISIBLE);
 				//loginSuccessShow.setText(getString(R.string.user_login_success, userName));

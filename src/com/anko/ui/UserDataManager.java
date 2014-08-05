@@ -249,14 +249,15 @@ public void insertWeightData(Float weight,String date){
 		ContentValues values = new ContentValues();
 		values.put(USER_WEIGHT, weight);
 		values.put(USER_DATE, date);
-		values.put("User_id",1);
+		values.put("User_id",WeightDAO.getInstance().getUseId());
 		mSQLiteDatabase.insert(TABLE_NAME2, null, values);
 	
 }
 
-public ArrayList<Weight> getWeightList(){
+public ArrayList<Weight> getWeightList(String id){
 	ArrayList<Weight> a= new ArrayList<Weight>();
-	Cursor mCursor=mSQLiteDatabase.query(TABLE_NAME2,null, null, null, null, null, null);
+	
+	Cursor mCursor=mSQLiteDatabase.query(TABLE_NAME2,null, "user_id"+"="+id, null, null, null, null);
 	if (mCursor!=null && mCursor.moveToFirst()){
 		do{
 			String weight = mCursor.getString(mCursor.getColumnIndex(USER_WEIGHT));
@@ -271,10 +272,10 @@ public ArrayList<Weight> getWeightList(){
 	
 }
 
-public ArrayList<Float> getWeightData(){
+public ArrayList<Float> getWeightData(String id){
 	mSQLiteDatabase = SQLiteDatabase.openOrCreateDatabase(DB_PATH + "/" + DB_NAME, null); 
 	ArrayList<Float> a= new ArrayList<Float>();
-	Cursor mCursor=mSQLiteDatabase.query(TABLE_NAME2,null, null, null, null, null, null);
+	Cursor mCursor=mSQLiteDatabase.query(TABLE_NAME2,null, "user_id"+"="+id, null, null, null, null);
 	if (mCursor!=null && mCursor.moveToFirst()){
 		do{
 			String weight = mCursor.getString(mCursor.getColumnIndex(USER_WEIGHT));
@@ -286,6 +287,8 @@ public ArrayList<Float> getWeightData(){
 	return a;
 	
 }
+
+
 
 
 }
