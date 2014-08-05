@@ -83,7 +83,8 @@ public class HomeActivity extends TabActivity {
 							//break;
 
 						case R.id.home_tab_search:
-							mTabHost.setCurrentTabByTag(TAB_SEARCH);
+							mTabHost.setCurrentTabByTag(TAB_SEARCH);							
+							
 							break;
 
 						case R.id.home_tab_category:

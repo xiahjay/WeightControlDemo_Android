@@ -1,9 +1,0 @@
-diff a/res/layout/activity_chart.xml b/res/layout/activity_chart.xml	(rejected hunks)
-@@ -20,6 +20,7 @@
- 			android:layout_width="match_parent"
- 	    	android:layout_height="wrap_content"
- 	    	android:cacheColorHint="@color/white"
-+	    	android:listSelector="@color/pink"
-        		android:fadeScrollbars="false" 
-        		android:divider="@color/pink"   
- 			android:dividerHeight="0.2dp" />

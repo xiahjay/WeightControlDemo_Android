@@ -270,6 +270,24 @@ public ArrayList<Weight> getWeightList(){
 	return a;
 	
 }
+
+public ArrayList<Float> getWeightData(){
+	mSQLiteDatabase = SQLiteDatabase.openOrCreateDatabase(DB_PATH + "/" + DB_NAME, null); 
+	ArrayList<Float> a= new ArrayList<Float>();
+	Cursor mCursor=mSQLiteDatabase.query(TABLE_NAME2,null, null, null, null, null, null);
+	if (mCursor!=null && mCursor.moveToFirst()){
+		do{
+			String weight = mCursor.getString(mCursor.getColumnIndex(USER_WEIGHT));
+			Float c= Float.valueOf(weight);
+			a.add(c);
+		}while(mCursor.moveToNext());
+	}
+	mSQLiteDatabase.close();
+	return a;
+	
+}
+
+
 }
 	
 
