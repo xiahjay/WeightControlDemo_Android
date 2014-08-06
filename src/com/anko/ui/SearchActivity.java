@@ -46,6 +46,7 @@ public class SearchActivity extends Activity {
     int[] xv = new int[10];  
     int[] yv = new int[10];  
     
+    
       
     /** Called when the activity is first created. */  
     @Override  
@@ -89,12 +90,12 @@ public class SearchActivity extends Activity {
         mDataset.addSeries(series);  
           
         //以下都是曲线的样式和属性等等的设置，renderer相当于一个用来给图表做渲染的句柄  
-        int color = Color.GREEN;  
-        PointStyle style = PointStyle.CIRCLE;  
+        int color = Color.RED;  
+        PointStyle style = PointStyle.DIAMOND;  
         renderer = buildRenderer(color, style, true);  
           
         //设置好图表的样式  
-        setChartSettings(renderer, "X", "Y", 0, 30, 0, 100, Color.WHITE, Color.WHITE);  
+        setChartSettings(renderer, "X", "Y", 0, 30, 0, 100, Color.BLACK, Color.WHITE);  
           
         //生成图表  
         chart = ChartFactory.getLineChartView(context, mDataset, renderer);  
@@ -158,7 +159,8 @@ public class SearchActivity extends Activity {
     protected void setChartSettings(XYMultipleSeriesRenderer renderer, String xTitle, String yTitle,  
                                     double xMin, double xMax, double yMin, double yMax, int axesColor, int labelsColor) {  
         //有关对图表的渲染可参看api文档  
-        renderer.setChartTitle(title);  
+    	//renderer.setApplyBackgroundColor(false);
+       // renderer.setChartTitle("8月体重变化趋势");  
         renderer.setXTitle(xTitle);  
         renderer.setYTitle(yTitle);  
         renderer.setXAxisMin(xMin);  
@@ -168,13 +170,19 @@ public class SearchActivity extends Activity {
         renderer.setAxesColor(axesColor);  
         renderer.setLabelsColor(labelsColor);  
         renderer.setShowGrid(true);  
-        renderer.setGridColor(Color.GREEN);  
+        renderer.setGridColor(Color.GRAY);  
         renderer.setXLabels(20);  
         renderer.setYLabels(10);  
-        renderer.setXTitle("Time");  
-        renderer.setYTitle("dBm");  
+        renderer.setXTitle("日期"); 
+        renderer.setYTitle("体重");  
+        renderer.setMarginsColor(Color.GRAY);
+        //renderer.setLabelsColor(Color.WHITE);
+        renderer.setMargins(new int[] {40, 30, 40,20});
+        renderer.setChartTitleTextSize((float) 40);
+        renderer.setAxisTitleTextSize((float) 20);
+        renderer.setLabelsTextSize((float) 20);
         renderer.setYLabelsAlign(Align.RIGHT);  
-        renderer.setPointSize((float) 2);  
+        renderer.setPointSize((float) 8);  
         renderer.setShowLegend(false);  
     }  
 }
