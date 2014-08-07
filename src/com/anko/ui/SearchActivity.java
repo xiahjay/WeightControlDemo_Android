@@ -103,7 +103,7 @@ public class SearchActivity extends Activity {
         renderer = buildRenderer(color, style, true);  
           
         //设置好图表的样式  
-        setChartSettings(renderer, "X", "Y", 0, 30, 30, 100, Color.BLACK, Color.BLACK);  
+        setChartSettings(renderer, "X", "Y", 0, 31, 30, 100, Color.BLACK, Color.BLACK);  
           
         //生成图表  
         chart = ChartFactory.getLineChartView(context, mDataset, renderer);  
@@ -191,11 +191,14 @@ public class SearchActivity extends Activity {
         //renderer.setLabelsColor(Color.WHITE);
         renderer.setMargins(new int[] {50, 40, 40,20});
         renderer.setChartTitleTextSize((float) 40);
-        renderer.setAxisTitleTextSize((float) 30);
+        renderer.setAxisTitleTextSize((float) 20);
         renderer.setLabelsTextSize((float) 30);
         renderer.setYLabelsAlign(Align.RIGHT);  
         renderer.setPointSize((float) 8);  
         renderer.setShowLegend(false);  
+        renderer.setPanLimits(new double[]{0,31,0,200});
+        renderer.setZoomLimits(new double[]{0,31,0,200});
+        
     }  
 }
     /*private void updateChart() {  

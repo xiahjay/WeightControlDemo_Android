@@ -24,83 +24,83 @@ import android.graphics.Typeface;
 
 /**
  * An abstract renderer to be extended by the multiple series classes.
- * Ò»¸ö³éÏóµÄäÖÈ¾Æ÷ÓÉ¶à¸öÏµÁÐÀàÀ©Õ¹¡£
+ * Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¾ï¿½ï¿½ï¿½É¶ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¹ï¿½ï¿½
  */
 public class DefaultRenderer implements Serializable {
   /**
    * 
    */
   private static final long serialVersionUID = 2795109507587957908L;
-  /** The chart title. Í¼±í±êÌâ¡£ */
+  /** The chart title. Í¼ï¿½ï¿½ï¿½ï¿½â¡£ */
   private String mChartTitle = "";
-  /** The chart title text size. Í¼±í±êÌâÎÄ±¾µÄ´óÐ¡¡£ */
+  /** The chart title text size. Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½Ä´ï¿½Ð¡ï¿½ï¿½ */
   private float mChartTitleTextSize = 15;
-  /** A no color constant. Ã»ÓÐÑÕÉ«²»±ä¡£*/
+  /** A no color constant. Ã»ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ä¡£*/
   public static final int NO_COLOR = 0;
-  /** The default background color. Ä¬ÈÏµÄ±³¾°É«¡£BLACK */
+  /** The default background color. Ä¬ï¿½ÏµÄ±ï¿½ï¿½ï¿½É«ï¿½ï¿½BLACK */
   public static final int BACKGROUND_COLOR = Color.BLACK;
-  /** The default color for text. ÎÄ±¾µÄÄ¬ÈÏÑÕÉ«¡£LTGRAY */
-  public static final int TEXT_COLOR = Color.LTGRAY;
-  /** A text font for regular text, like the chart labels.ÎÄ±¾×ÖÌåµÄÎÄ±¾,¾ÍÏñÍ¼±í±êÇ©¡£ */
+  /** The default color for text. ï¿½Ä±ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½LTGRAY */
+  public static final int TEXT_COLOR = Color.BLACK;
+  /** A text font for regular text, like the chart labels.ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½,ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½Ç©ï¿½ï¿½ */
   private static final Typeface REGULAR_TEXT_FONT = Typeface
       .create(Typeface.SERIF, Typeface.NORMAL);
-  /** The typeface name for the texts. ÎÄ±¾µÄ×ÖÌåÃû³Æ¡£*/
+  /** The typeface name for the texts. ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¡ï¿½*/
   private String mTextTypefaceName = REGULAR_TEXT_FONT.toString();
-  /** The typeface style for the texts. ÎÄ±¾µÄ×ÖÌå·ç¸ñ¡£ */
+  /** The typeface style for the texts. ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
   private int mTextTypefaceStyle = Typeface.NORMAL;
-  /** The typeface for the texts ÎÄ±¾µÄ×ÖÌå*/
+  /** The typeface for the texts ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
   private Typeface mTextTypeface;
-  /** The chart background color. Í¼±í±³¾°ÑÕÉ«¡£*/
+  /** The chart background color. Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½*/
   private int mBackgroundColor;
-  /** If the background color is applied. (ÊÇ·ñÓÐ±³¾°ÑÕÉ«(Ó¦¸Ã¿ÉÒÔÕâÃ´ÁË½â))¡£*/
+  /** If the background color is applied. (ï¿½Ç·ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½É«(Ó¦ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½Ã´ï¿½Ë½ï¿½))ï¿½ï¿½*/
   private boolean mApplyBackgroundColor;
-  /** If the axes are visible. ×ø±êÖáÊÇ·ñ¿É¼û */
+  /** If the axes are visible. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½É¼ï¿½ */
   private boolean mShowAxes = true;
-  /** The axes color. ×ø±êÖáµÄÑÕÉ«¡£ */
+  /** The axes color. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ */
   private int mAxesColor = TEXT_COLOR;
-  /** If the labels are visible. ±êÇ©ÊÇ·ñ¿É¼û */
+  /** If the labels are visible. ï¿½ï¿½Ç©ï¿½Ç·ï¿½É¼ï¿½ */
   private boolean mShowLabels = true;
-  /** The labels color. ±êÇ©µÄÑÕÉ«¡£ */
+  /** The labels color. ï¿½ï¿½Ç©ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ */
   private int mLabelsColor = TEXT_COLOR;
-  /** The labels text size. ±êÇ©µÄÎÄ±¾´óÐ¡¡£ */
+  /** The labels text size. ï¿½ï¿½Ç©ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ */
   private float mLabelsTextSize = 10;
-  /** If the legend is visible. Õâ¸öËµÃ÷¡¢Í¼Àý ÊÇ·ñ¿É¼û¡£*/
+  /** If the legend is visible. ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ ï¿½Ç·ï¿½É¼ï¿½ï¿½ï¿½*/
   private boolean mShowLegend = true;
-  /** The legend text size. Õâ¸öËµÃ÷¡¢Í¼Àý ×ÖÌåµÄ´óÐ¡ */
+  /** The legend text size. ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ä´ï¿½Ð¡ */
   private float mLegendTextSize = 12;
-  /** If the legend should size to fit. Õâ¸öËµÃ÷¡¢Í¼Àý ×ÖÌåµÄ´óÐ¡ÊÇ·ñºÏÊÊ */
+  /** If the legend should size to fit. ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ä´ï¿½Ð¡ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ */
   private boolean mFitLegend = false;
-  /** If the X axis grid should be displayed. XÖáÍø¸ñÊÇ·ñÐèÒªÏÔÊ¾¡£*/
+  /** If the X axis grid should be displayed. Xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½Ê¾ï¿½ï¿½*/
   private boolean mShowGridX = false;
-  /** If the Y axis grid should be displayed. YÖáÍø¸ñÊÇ·ñÐèÒªÏÔÊ¾¡£ */
+  /** If the Y axis grid should be displayed. Yï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½Ê¾ï¿½ï¿½ */
   private boolean mShowGridY = false;
-  /** If the custom text grid should be displayed.×Ô¶¨ÒåÎÄ±¾Íø¸ñÊÇ·ñÐèÒªÏÔÊ¾¡£ */
+  /** If the custom text grid should be displayed.ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½Ê¾ï¿½ï¿½ */
   private boolean mShowCustomTextGrid = false;
-  /** The simple renderers that are included in this multiple series renderer. ¼òµ¥µÄäÖÈ¾Æ÷ÏµÁÐµÄList¼¯ºÏ¡£ */
+  /** The simple renderers that are included in this multiple series renderer. ï¿½òµ¥µï¿½ï¿½ï¿½È¾ï¿½ï¿½Ïµï¿½Ðµï¿½Listï¿½ï¿½ï¿½Ï¡ï¿½ */
   private List<SimpleSeriesRenderer> mRenderers = new ArrayList<SimpleSeriesRenderer>();
-  /** The antialiasing flag. ÊÇ·ñÐèÒª ¿¹¾â³Ý  */
+  /** The antialiasing flag. ï¿½Ç·ï¿½ï¿½ï¿½Òª ï¿½ï¿½ï¿½ï¿½ï¿½  */
   private boolean mAntialiasing = true;
-  /** The legend height. Õâ¸öËµÃ÷£¬Í¼ÀýµÄ¸ß¶È */
+  /** The legend height. ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½Ä¸ß¶ï¿½ */
   private int mLegendHeight = 0;
-  /** The margins size. ¾àÀë±ßÔµµÄ³ß´ç´óÐ¡ */
+  /** The margins size. ï¿½ï¿½ï¿½ï¿½ï¿½Ôµï¿½Ä³ß´ï¿½ï¿½Ð¡ */
   private int[] mMargins = new int[] { 20, 30, 10, 20 };
-  /** A value to be used for scaling the chart. (±í¸ñµÄËõ·Å±ÈÀý) */
+  /** A value to be used for scaling the chart. (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å±ï¿½ï¿½ï¿½) */
   private float mScale = 1;
-  /** A flag for enabling the pan. »­±ÊÊÚÈ¨(ÊÇ·ñÆôÓÃ»­±Ê) */
+  /** A flag for enabling the pan. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¨(ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½) */
   private boolean mPanEnabled = true;
-  /** A flag for enabling the zoom. Ò»¸ö±êÖ¾£¬ÓÃÓÚÊ¹±ä½¹¡£*/
+  /** A flag for enabling the zoom. Ò»ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ä½¹ï¿½ï¿½*/
   private boolean mZoomEnabled = true;
-  /** A flag for enabling the visibility of the zoom buttons. ÓÒÏÂ½ÇµÄ±ä½¹°´Å¥µÄ¿É¼ûÐÔ¡£*/
+  /** A flag for enabling the visibility of the zoom buttons. ï¿½ï¿½ï¿½Â½ÇµÄ±ä½¹ï¿½ï¿½Å¥ï¿½Ä¿É¼ï¿½ï¿½Ô¡ï¿½*/
   private boolean mZoomButtonsVisible = false;
-  /** The zoom rate. ±ä½¹ÂÊ¡£(Ó¦¸ÃÊÇ·Åµ½»òËõÐ¡µÄ±¶Êý)*/
+  /** The zoom rate. ï¿½ä½¹ï¿½Ê¡ï¿½(Ó¦ï¿½ï¿½ï¿½Ç·Åµï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½Ä±ï¿½ï¿½ï¿½)*/
   private float mZoomRate = 1.5f;
-  /** A flag for enabling the external zoom. Ê¹Íâ²¿·Å´óµÄ±êÖ¾¡£ */
+  /** A flag for enabling the external zoom. Ê¹ï¿½â²¿ï¿½Å´ï¿½Ä±ï¿½Ö¾ï¿½ï¿½ */
   private boolean mExternalZoomEnabled = false;
   /** The original chart scale. */
   private float mOriginalScale = mScale;
   /** A flag for enabling the click on elements. */
   private boolean mClickEnabled = false;
-  /** The selectable radius around a clickable point. Ò»¸ö±êÖ¾£¬ÓÃÓÚÊ¹ÔªËØÉÏµã»÷¡£*/
+  /** The selectable radius around a clickable point. Ò»ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹Ôªï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½*/
   private int selectableBuffer = 15;
   /** If the chart should display the values (available for pie chart). */
   private boolean mDisplayValues;
@@ -186,9 +186,9 @@ public class DefaultRenderer implements Serializable {
 
   /**
    * Returns the simple renderer from the multiple renderer list.
-   * ·µ»Ø¼òµ¥µÄ´Ó¶à¸öäÖÈ¾Æ÷äÖÈ¾Æ÷ÁÐ±í¡£
-   * @param index the index in the simple renderers list Ö¸Êý,¸ÃÖ¸ÊýÔÚ¼òµ¥µÄäÖÈ¾Æ÷ÁÐ±íÖÐ
-   * @return the simple renderer at the specified index ·µ»Ø¼òµ¥µÄäÖÈ¾Æ÷ÔÚÖ¸¶¨µÄË÷Òý
+   * ï¿½ï¿½ï¿½Ø¼òµ¥µÄ´Ó¶ï¿½ï¿½ï¿½ï¿½È¾ï¿½ï¿½ï¿½ï¿½È¾ï¿½ï¿½ï¿½Ð±ï¿½
+   * @param index the index in the simple renderers list Ö¸ï¿½ï¿½,ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½Ú¼òµ¥µï¿½ï¿½ï¿½È¾ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½
+   * @return the simple renderer at the specified index ï¿½ï¿½ï¿½Ø¼òµ¥µï¿½ï¿½ï¿½È¾ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
    */
   public SimpleSeriesRenderer getSeriesRendererAt(int index) {
     return mRenderers.get(index);
@@ -196,7 +196,7 @@ public class DefaultRenderer implements Serializable {
 
   /**
    * Returns the simple renderers count in the multiple renderer list.
-   * ·µ»Ø ¼òµ¥µÄäÖÈ¾Æ÷ÏµÁÐµÄList¼¯ºÏµÄ¸öÊý¡£
+   * ï¿½ï¿½ï¿½ï¿½ ï¿½òµ¥µï¿½ï¿½ï¿½È¾ï¿½ï¿½Ïµï¿½Ðµï¿½Listï¿½ï¿½ï¿½ÏµÄ¸ï¿½ï¿½ï¿½ï¿½ï¿½
    * @return the simple renderers count
    */
   public int getSeriesRendererCount() {
@@ -358,7 +358,7 @@ public class DefaultRenderer implements Serializable {
 
   /**
    * Sets if the X axis grid should be visible.
-   * ÉèÖÃÊÇ·ñÏÔÊ¾±í¸ñÖÐXµÄÍø¸ñÏß
+   * ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
    * @param showGrid the visibility flag for the X axis grid
    */
   public void setShowGridX(boolean showGrid) {
@@ -367,7 +367,7 @@ public class DefaultRenderer implements Serializable {
 
   /**
    * Sets if the Y axis grid should be visible.
-   * ÉèÖÃÊÇ·ñÏÔÊ¾±í¸ñÖÐYµÄÍø¸ñÏß
+   * ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½Yï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
    * @param showGrid the visibility flag for the Y axis grid
    */
   public void setShowGridY(boolean showGrid) {
@@ -376,7 +376,7 @@ public class DefaultRenderer implements Serializable {
 
   /**
    * Sets if the grid should be visible.
-   * ÉèÖÃÊÇ·ñÏÔÊ¾±í¸ñÖÐX¡¢YµÄÍø¸ñÏß
+   * ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½ï¿½Yï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
    * @param showGrid the visibility flag for the grid
    */
   public void setShowGrid(boolean showGrid) {
@@ -404,7 +404,7 @@ public class DefaultRenderer implements Serializable {
 
   /**
    * Returns if the legend should be visible.
-   * ·µ»Ø Õâ¸öËµÃ÷¡¢Í¼Àý ÊÇ·ñ¿É¼û
+   * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ ï¿½Ç·ï¿½É¼ï¿½
    * @return the visibility flag for the legend
    */
   public boolean isShowLegend() {
@@ -422,7 +422,7 @@ public class DefaultRenderer implements Serializable {
 
   /**
    * Returns if the legend should size to fit.
-   * ·µ»Ø Õâ¸öËµÃ÷¡¢Í¼Àý ×ÖÌåµÄ´óÐ¡ÊÇ·ñºÏÊÊ 
+   * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ä´ï¿½Ð¡ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ 
    * @return the fit behavior
    */
   public boolean isFitLegend() {
@@ -551,7 +551,7 @@ public class DefaultRenderer implements Serializable {
 
   /**
    * Returns the enabled state of the zoom.
-   * ÉèÖÃXÖáºÍYÖáÊÇ·ñ¿ÉÒÔ±»Ëõ·Å ×ÓÀàÖÐÒ²ÓÐ
+   * ï¿½ï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½Yï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½
    * @return if zoom is enabled
    */
   public boolean isZoomEnabled() {
@@ -560,7 +560,7 @@ public class DefaultRenderer implements Serializable {
 
   /**
    * Sets the enabled state of the zoom.
-   * ÉèÖÃXÖáºÍYÖáÊÇ·ñ¿ÉÒÔ±»Ëõ·Å£¬×ÓÀàÒ²ÓÐÕâ¸ö·½·¨£¬µ«´«ÈëµÄÎªÁ½¸öÖµ£¬Ò²¾ÍÊÇX¡¢YÖá¿ÉÒÔ²»Ò»Ñù
+   * ï¿½ï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½Yï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½Å£ï¿½ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½Xï¿½ï¿½Yï¿½ï¿½ï¿½ï¿½Ô²ï¿½Ò»ï¿½ï¿½
    * @param enabled zoom enabled
    */
   public void setZoomEnabled(boolean enabled) {
@@ -569,7 +569,7 @@ public class DefaultRenderer implements Serializable {
 
   /**
    * Returns the visible state of the zoom buttons.
-   * ·µ»Ø ÓÒÏÂ½ÇµÄ±ä½¹°´Å¥µÄ¿É¼ûÐÔ
+   * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â½ÇµÄ±ä½¹ï¿½ï¿½Å¥ï¿½Ä¿É¼ï¿½ï¿½ï¿½
    * @return if zoom buttons are visible
    */
   public boolean isZoomButtonsVisible() {
@@ -578,7 +578,7 @@ public class DefaultRenderer implements Serializable {
 
   /**
    * Sets the visible state of the zoom buttons.
-   * ÉèÖÃ ÓÒÏÂ½ÇµÄ±ä½¹°´Å¥µÄ¿É¼ûÐÔ
+   * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â½ÇµÄ±ä½¹ï¿½ï¿½Å¥ï¿½Ä¿É¼ï¿½ï¿½ï¿½
    * @param visible if the zoom buttons are visible
    */
   public void setZoomButtonsVisible(boolean visible) {
@@ -587,7 +587,7 @@ public class DefaultRenderer implements Serializable {
 
   /**
    * Returns the enabled state of the external (application implemented) zoom.
-   * ·µ»Ø Ê¹Íâ²¿·Å´óµÄ±êÖ¾¡£(·µ»ØµÄÆôÓÃ×´Ì¬Íâ²¿(Ó¦ÓÃ³ÌÐò)ÊµÏÖ±ä½¹¡£)
+   * ï¿½ï¿½ï¿½ï¿½ Ê¹ï¿½â²¿ï¿½Å´ï¿½Ä±ï¿½Ö¾ï¿½ï¿½(ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½â²¿(Ó¦ï¿½Ã³ï¿½ï¿½ï¿½)Êµï¿½Ö±ä½¹ï¿½ï¿½)
    * @return if external zoom is enabled
    */
   public boolean isExternalZoomEnabled() {
@@ -605,7 +605,7 @@ public class DefaultRenderer implements Serializable {
 
   /**
    * Returns the zoom rate.
-   * ·µ»Ø ±ä½¹ÂÊ¡£(Ó¦¸ÃÊÇ·Åµ½»òËõÐ¡µÄ±¶Êý)
+   * ï¿½ï¿½ï¿½ï¿½ ï¿½ä½¹ï¿½Ê¡ï¿½(Ó¦ï¿½ï¿½ï¿½Ç·Åµï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½Ä±ï¿½ï¿½ï¿½)
    * @return the zoom rate
    */
   public float getZoomRate() {
@@ -614,7 +614,7 @@ public class DefaultRenderer implements Serializable {
 
   /**
    * Returns the enabled state of the pan.
-   * ·µ»Ø »­±ÊÊÚÈ¨(ÊÇ·ñÆôÓÃ»­±Ê)  Èç¹ûÉèÖÃÎªfalseµÄ»°£¬ÔòÎÞ·¨ÍÏ¶¯
+   * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¨(ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½)  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªfalseï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ·ï¿½ï¿½Ï¶ï¿½
    * @return if pan is enabled
    */
   public boolean isPanEnabled() {
@@ -632,7 +632,7 @@ public class DefaultRenderer implements Serializable {
 
   /**
    * Sets the zoom rate.
-   * ÉèÖÃ ±ä½¹ÂÊ¡£(Ó¦¸ÃÊÇ·Åµ½»òËõÐ¡µÄ±¶Êý)
+   * ï¿½ï¿½ï¿½ï¿½ ï¿½ä½¹ï¿½Ê¡ï¿½(Ó¦ï¿½ï¿½ï¿½Ç·Åµï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½Ä±ï¿½ï¿½ï¿½)
    * @param rate the zoom rate
    */
   public void setZoomRate(float rate) {
@@ -696,7 +696,7 @@ public class DefaultRenderer implements Serializable {
   /**
    * Returns the margin sizes. An array containing the margins in this order:
    * top, left, bottom, right
-   * ·µ»Ø ¾àÀë±ßÔµµÄ³ß´ç´óÐ¡ Êý×éË³Ðò:[ÉÏ¡¢×ó¡¢ÏÂ¡¢ÓÒ]
+   * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ôµï¿½Ä³ß´ï¿½ï¿½Ð¡ ï¿½ï¿½ï¿½ï¿½Ë³ï¿½ï¿½:[ï¿½Ï¡ï¿½ï¿½ï¿½ï¿½Â¡ï¿½ï¿½ï¿½]
    * @return the margin sizes
    */
   public int[] getMargins() {
@@ -715,7 +715,7 @@ public class DefaultRenderer implements Serializable {
 
   /**
    * Returns if the chart is inside a scroll view and doesn't need to shrink.
-   * ·µ»Ø Í¼±íÄÚÊÇ·ñ°üº¬Ò»¸ö¹ö¶¯ÊÓÍ¼ºÍ²»ÐèÒªÊÕËõ¡£
+   * ï¿½ï¿½ï¿½ï¿½ Í¼ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½Í²ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
    * @return if it is inside a scroll view
    */
   public boolean isInScroll() {
