@@ -2,7 +2,8 @@
  
     
   
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+         android:background="@drawable/aaa" 
         android:id="@+id/linear"  
         android:layout_width="fill_parent"  
         android:layout_height="fill_parent"  

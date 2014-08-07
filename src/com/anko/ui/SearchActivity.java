@@ -95,7 +95,7 @@ public class SearchActivity extends Activity {
         renderer = buildRenderer(color, style, true);  
           
         //设置好图表的样式  
-        setChartSettings(renderer, "X", "Y", 0, 30, 0, 100, Color.BLACK, Color.WHITE);  
+        setChartSettings(renderer, "X", "Y", 0, 30, 30, 100, Color.BLACK, Color.BLACK);  
           
         //生成图表  
         chart = ChartFactory.getLineChartView(context, mDataset, renderer);  
@@ -168,14 +168,17 @@ public class SearchActivity extends Activity {
         renderer.setYAxisMin(yMin);  
         renderer.setYAxisMax(yMax);  
         renderer.setAxesColor(axesColor);  
+        //render.setLabelsColor(Color.BLACK);
         renderer.setLabelsColor(labelsColor);  
+        renderer.setLabelsColor(Color.BLACK);
         renderer.setShowGrid(true);  
         renderer.setGridColor(Color.GRAY);  
         renderer.setXLabels(20);  
         renderer.setYLabels(10);  
         renderer.setXTitle("日期"); 
         renderer.setYTitle("体重");  
-        renderer.setMarginsColor(Color.GRAY);
+        renderer.setMarginsColor(Color.argb(0, 0xff, 0, 0));
+        //renderer.setMarginsColor(Color.GRAY);
         //renderer.setLabelsColor(Color.WHITE);
         renderer.setMargins(new int[] {40, 30, 40,20});
         renderer.setChartTitleTextSize((float) 40);

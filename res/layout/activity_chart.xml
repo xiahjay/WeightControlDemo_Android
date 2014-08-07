@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent"
+     android:background="@drawable/aaa" >
 
     <Button
         android:id="@+id/add_weight"
@@ -17,6 +18,7 @@
         android:textSize="18sp" />
     
 		<ListView android:id="@+id/lvCommonListView"
+		     android:background="@drawable/aaa"
 			android:layout_width="match_parent"
 	    	android:layout_height="wrap_content"
 	    	android:cacheColorHint="@color/white"

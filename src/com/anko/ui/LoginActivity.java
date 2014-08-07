@@ -45,14 +45,14 @@ public class LoginActivity extends Activity {
 		mPwd = (EditText) findViewById(R.id.login_edit_pwd);
 		mRegisterButton = (Button) findViewById(R.id.login_btn_register);
 		mLoginButton = (Button) findViewById(R.id.login_btn_login);
-		mCancleButton = (Button) findViewById(R.id.login_btn_cancle);
+		//mCancleButton = (Button) findViewById(R.id.login_btn_cancle);
 		//loginView=findViewById(R.id.login_view);
 		//loginSuccessView=findViewById(R.id.login_success_view);
 		//loginSuccessShow=(TextView) findViewById(R.id.login_success_show);
 
 		mRegisterButton.setOnClickListener(mListener);
 		mLoginButton.setOnClickListener(mListener);
-		mCancleButton.setOnClickListener(mListener);
+		//mCancleButton.setOnClickListener(mListener);
 		
 		  
         }
@@ -66,9 +66,9 @@ public class LoginActivity extends Activity {
 			case R.id.login_btn_login:
 				login();
 				break;
-			case R.id.login_btn_cancle:
-				cancle();
-				break;
+			//case R.id.login_btn_cancle:
+				//cancle();
+				//break;
 			}
 		}
 	};
@@ -127,11 +127,11 @@ public class LoginActivity extends Activity {
 		}
 	}
 
-	public void cancle() {
+	/*public void cancle() {
 		mAccount.setText("");
 		mPwd.setText("");
 	}
-
+*/
 	public boolean isUserNameAndPwdValid() {
 		if (mAccount.getText().toString().trim().equals("")) {
 			Toast.makeText(this, getString(R.string.account_empty),

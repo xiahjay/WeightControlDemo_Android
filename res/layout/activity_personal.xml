@@ -1,7 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+     android:background="@drawable/aaa" >
 
     <!-- ******************************************************************** -->
 
@@ -9,7 +10,7 @@
         android:id="@+id/relativeLayout1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="14dp"        
         android:background="@drawable/diary_single_item"
         android:clickable="true"
         android:gravity="center_vertical"
@@ -258,22 +259,5 @@
             android:scaleType="matrix"
             android:src="@drawable/diary_arrow" />
     </RelativeLayout>
-
-    <Button
-        android:id="@+id/exit_button"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp"
-        android:layout_marginTop="350dp"
-        android:background="@drawable/btn_style_red"
-        android:gravity="center"
-        android:onClick="onClickExit"
-        android:padding="4dp"
-        android:text="退出登录"
-        android:textColor="#fff"
-        android:textSize="18sp" />
-
-
 
 </RelativeLayout>
