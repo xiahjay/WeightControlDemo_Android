@@ -10,7 +10,8 @@
 		  android:layout_height="wrap_content"
 		  android:layout_marginLeft="20dp"
 	      android:layout_marginRight="20dp" 
-		  android:hint="请输入实际体重（单位kg)"/>
+		  android:hint="请输入实际体重（单位kg)"
+		  android:inputType="numberDecimal"/>
 	
 
 </LinearLayout>

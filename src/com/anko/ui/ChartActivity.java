@@ -118,6 +118,8 @@ public class ChartActivity extends Activity implements OnItemSelectedListener, O
          datePicker = (DatePicker) ad.findViewById(R.id.datepicker);
 	     EditText editWeight = (EditText) ad.findViewById(R.id.edit_weight);	                			  
          String settingWeight=editWeight.getText().toString().trim();	
+         //将新添加的体重信息存储到DAO中
+         //LatestWeightDAO.getInstance().setLatestWeight(settingWeight);
          Float currentWeight=Float.valueOf(settingWeight);
          dataList.add(currentWeight);
          onDateChanged(null, 0, 0, 0);

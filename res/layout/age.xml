@@ -10,7 +10,8 @@
 		  android:layout_height="wrap_content"
 		  android:layout_marginLeft="20dp"
 	      android:layout_marginRight="20dp" 
-		  android:hint="请输入年龄"/>
+		  android:hint="请输入年龄"
+		  android:inputType="numberDecimal"/>
 	
 
 </LinearLayout>

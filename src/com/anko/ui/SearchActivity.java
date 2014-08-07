@@ -72,13 +72,21 @@ public class SearchActivity extends Activity {
 			mUserDataManager = new UserDataManager(this);
 		} 
         //这个类用来放置曲线上的所有点，是一个点的集合，根据这些点画出曲线         
-        ArrayList<Float> weightList= new  ArrayList<Float>();
+        //ArrayList<Float> weightList= new  ArrayList<Float>();
+       // String id= WeightDAO.getInstance().getUseId();
+        //weightList=mUserDataManager.getWeightData(id);
+        ArrayList<Weight> weightList= new  ArrayList<Weight>();
         String id= WeightDAO.getInstance().getUseId();
-        weightList=mUserDataManager.getWeightData(id);
+        mUserDataManager.openDatabase();
+        weightList=mUserDataManager.getWeightList(id);
+        mUserDataManager.closeDatabase();
         
         for(int i=0; i<weightList.size(); i++){
-        	float x=i+1;
-        	Float fy= weightList.get(i);
+        	Weight weight=weightList.get(i);
+        	Float fy= weight.getUserWeight();
+        	String a= weight.getUserDate();
+        	String suba=a.substring(8, 10);
+        	float x=Float.parseFloat(suba);
         	float y=fy.floatValue();
         	series.add(x, y);
         	}
@@ -178,12 +186,13 @@ public class SearchActivity extends Activity {
         renderer.setXTitle("日期"); 
         renderer.setYTitle("体重");  
         renderer.setMarginsColor(Color.argb(0, 0xff, 0, 0));
+        renderer.setBackgroundColor(Color.WHITE);
         //renderer.setMarginsColor(Color.GRAY);
         //renderer.setLabelsColor(Color.WHITE);
-        renderer.setMargins(new int[] {40, 30, 40,20});
+        renderer.setMargins(new int[] {50, 40, 40,20});
         renderer.setChartTitleTextSize((float) 40);
-        renderer.setAxisTitleTextSize((float) 20);
-        renderer.setLabelsTextSize((float) 20);
+        renderer.setAxisTitleTextSize((float) 30);
+        renderer.setLabelsTextSize((float) 30);
         renderer.setYLabelsAlign(Align.RIGHT);  
         renderer.setPointSize((float) 8);  
         renderer.setShowLegend(false);  

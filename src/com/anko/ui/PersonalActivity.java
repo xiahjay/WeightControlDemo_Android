@@ -25,13 +25,28 @@ import android.widget.TextView;
 import android.util.Log;
 
 public class PersonalActivity extends Activity {
-
+	private static final String TAG = "PersonalActivity";
+	//private TextView settingRealWeight;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_personal);
+		// settingRealWeight = (TextView) findViewById(R.id.setting_real_weight);
+		
+		
 	}
 
+	@Override
+    protected void onResume(){
+    	super.onResume();
+    	Log.d("onResume", "onResume Method is executed");
+    	//TextView settingRealWeight = (TextView) findViewById(R.id.setting_real_weight);
+		//String a= LatestWeightDAO.getInstance().getLatestWeight();
+		//Log.i(TAG,"onResume", a="+a");
+		//if(a!=null)
+		//settingRealWeight.setText(a);
+    }
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
