@@ -58,7 +58,7 @@
 			android:layout_height="wrap_content" 
 			android:background="@drawable/btn_style_blue"
 			android:layout_marginRight="10dp"
-			 android:textColor="@color/white"
+			android:textColor="@color/white"
 			android:text="登录"
 			android:textSize="20dp" />
 		<Button  android:id="@+id/login_btn_register"

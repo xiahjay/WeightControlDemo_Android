@@ -7,10 +7,13 @@
 
     <Button
         android:id="@+id/add_weight"
+        android:background="@drawable/btn_style_blue"
+        android:textColor="@color/white"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp"        
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="20dp"        
         android:gravity="center"
         android:onClick="onClickAddWeight"
         android:padding="4dp"
@@ -18,9 +21,12 @@
         android:textSize="18sp" />
     
 		<ListView android:id="@+id/lvCommonListView"
-		     android:background="@drawable/aaa"
+		    android:layout_marginTop="20dp" 
+		    android:background="@color/white"		  
 			android:layout_width="match_parent"
 	    	android:layout_height="wrap_content"
+	    	android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
 	    	android:cacheColorHint="@color/white"
        		android:fadeScrollbars="false" 
        		android:divider="@color/pink"   

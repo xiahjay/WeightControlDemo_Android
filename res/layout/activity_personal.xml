@@ -69,7 +69,7 @@
             android:layout_centerVertical="true"
             android:padding="8dp"
             android:text="基本信息"
-            android:textColor="#000"
+            android:textColor="@color/pink"
             android:textSize="17sp" />
     </RelativeLayout>
     <!-- *********************************************************************** -->
